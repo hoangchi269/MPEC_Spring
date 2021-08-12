@@ -1,6 +1,7 @@
 package com.mpec.quanlysinhvien.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,10 +24,15 @@ public class SinhVien implements Serializable {
     private int id;
 
     @Column(name = "ten_sinh_vien")
+    @JsonProperty("ten_sinh_vien")
     private String tenSinhVien;
 
     @Column(name = "mssv")
+    @JsonProperty("ma_sinh_vien")
     private String maSinhVien;
+
+    @Column(name = "so_dien_thoai")
+    private String soDienThoai;
 
     @Column(name = "gioi_tinh")
     private String gioiTinh;
