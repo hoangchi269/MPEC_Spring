@@ -9,4 +9,5 @@ public class QuanlysinhvienApplication {
     public static void main(String[] args) {
         SpringApplication.run(QuanlysinhvienApplication.class, args);
     }
+
 }

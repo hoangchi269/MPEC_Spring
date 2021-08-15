@@ -1,25 +1,23 @@
 package com.mpec.quanlysinhvien.service;
 
-import com.mpec.quanlysinhvien.entities.SinhVien;
-import com.mpec.quanlysinhvien.entities.SinhVienDTO;
+import com.mpec.quanlysinhvien.entiies.SinhVien;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
-
 
 public interface SinhVienService {
 
-    List<SinhVien> findAll(Pageable pageable);
+    Page<SinhVien> findAll(Pageable pageable);
 
     Page<SinhVien> search(String text, Pageable pageable);
 
-    Optional<SinhVien> findById(int id, boolean xoa);
+    Optional<SinhVien> findById(int id);
 
     Optional<SinhVien> save(SinhVien sinhVien);
 
-    Optional<SinhVien> update(SinhVienDTO sinhVien);
+    Optional<SinhVien> update (SinhVien sinhVien);
 
     Boolean delete(int id);
+
 }

@@ -1,6 +1,7 @@
 package com.mpec.quanlysinhvien.repository;
 
-import com.mpec.quanlysinhvien.entities.SinhVien;
+
+import com.mpec.quanlysinhvien.entiies.SinhVien;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,30 +10,28 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Optional;
 
-// lấy dữ liệu từ db
 @Repository
 public interface SinhVienRepo extends JpaRepository<SinhVien, Integer> {
 
     @Query(value = "from SinhVien sv where sv.xoa = false")
-    List<SinhVien> findAll();
+    Page<SinhVien> findAll(Pageable pageable);
 
-    @Query(value = "from SinhVien sv where (" +
-            " sv.tenSinhVien like concat('%', ?1, '?%') " +
-            " or sv.maSinhVien like concat('%', ?1, '%') " +
+    @Query(value = "from SinhVien sv where(" +
+            "sv.tenSinhVien like concat('%',?1,'%')" +
+            "or sv.maSinhVien like concat('%',?1,'%')" +
             ")" +
-            " and sv.xoa = false ")
+            "and sv.xoa = false")
     Page<SinhVien> search(String text, Pageable pageable);
 
-    @Query(value = "from SinhVien  sv where  sv.id = ?1 and sv.xoa=?2 ")
-    Optional<SinhVien> findById(int id, boolean xoa);
-
+    @Query(value = "from SinhVien sv where sv.id = ?1 and sv.xoa = false ")
+    Optional<SinhVien> findById(int id);
 
     @Modifying
     @Transactional
-    @Query(value = "update SinhVien sv set sv.xoa = true where sv.id = ?1")
+    @Query(value ="update SinhVien  sv set sv.xoa = true where sv.id = ?1" )
     Integer delete(int id);
+
 
 }
