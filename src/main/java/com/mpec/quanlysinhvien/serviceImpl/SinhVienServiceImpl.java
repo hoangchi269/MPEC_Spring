@@ -73,7 +73,8 @@ public class SinhVienServiceImpl implements SinhVienService {
     @Override
     public Boolean delete(int id) {
         try{
-            return sinhVienRepo.delete(id) >= 0;
+            Boolean rs=  sinhVienRepo.delete(id) >= 0;
+            return rs;
         }
         catch (Exception ex){
             return  false;
