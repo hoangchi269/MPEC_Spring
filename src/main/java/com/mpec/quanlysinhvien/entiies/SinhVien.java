@@ -31,7 +31,7 @@ public class SinhVien implements Serializable {
     @Column(name = "gioi_tinh")
     private String gioiTinh;
 
-    @Column(name = "diachi")
+    @Column(name = "dia_chi")
     private String diaChi;
 
     @Column(name = "xoa")
